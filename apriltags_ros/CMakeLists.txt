@@ -70,6 +70,21 @@ target_link_libraries(apriltag_detector_node
   apriltag_detector
 )
 
+add_library(apriltag_detector_nosync 
+  src/apriltag_detector_nosync.cpp
+)
+target_link_libraries(apriltag_detector_nosync
+  ${catkin_LIBRARIES}
+)
+add_dependencies(apriltag_detector_nosync apriltags_ros_generate_messages_cpp)
+
+add_executable(apriltag_detector_node_nosync
+  src/apriltag_detector_node.cpp
+)
+target_link_libraries(apriltag_detector_node_nosync
+  ${catkin_LIBRARIES}
+  apriltag_detector_nosync
+)
 #############
 ## Install ##
 #############
